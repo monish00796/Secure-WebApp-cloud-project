@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<head>
+
+<title>Transactions History</title>
+
+<script>
+
+async function loadTransactions(){
+
+const response=await fetch("/transactions/1")
+
+const transactions=await response.json()
+
+const table=document.getElementById("transactionsTable")
+
+table.innerHTML=""
+
+transactions.forEach(tx=>{
+
+table.innerHTML+=`
+
+<tr>
+
+<td>${tx.transaction_id}</td>
+<td>${tx.merchant_name || "-"}</td>
+<td>${tx.amount}</td>
+<td>${tx.transaction_type}</td>
+<td>${tx.status}</td>
+<td>${new Date(tx.created_at).toLocaleString()}</td>
+
+</tr>
+
+`
+
+})
+
+}
+
+window.onload=loadTransactions
+
+</script>
+
+</head>
+
+<body>
+
+<h2>User Transactions</h2>
+
+<table border="1">
+
+<thead>
+
+<tr>
+
+<th>ID</th>
+<th>Merchant</th>
+<th>Amount</th>
+<th>Type</th>
+<th>Status</th>
+<th>Date</th>
+
+</tr>
+
+</thead>
+
+<tbody id="transactionsTable"></tbody>
+
+</table>
+
+<br>
+
+<a href="dashboard.html">Back to Dashboard</a>
+
+</body>
+
+</html>
