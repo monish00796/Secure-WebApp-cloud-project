@@ -5,6 +5,7 @@ Overview
 This project demonstrates a secure multi-tier web application architecture deployed in a cloud environment. The primary focus is on understanding how public-facing services securely communicate with internal backend systems.
 
 The project emphasizes network isolation, TLS-based communication, and secure configuration of cloud resources.
+This project was completed as part of extra supplementary coursework. 
 
 Architecture:
 The environment consists of:
